@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: annam-shop
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopdb?createDatabaseIfNotExist=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh
+    username: ${DB_USERNAME:shop}
+    password: ${DB_PASSWORD:shop}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        jdbc.time_zone: Asia/Ho_Chi_Minh
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  mvc:
+    problemdetails:
+      enabled: false
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:annam-shop-dev-secret-change-me-please-32bytes}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:720}
+
+logging:
+  level:
+    com.annam.shop: info
+    org.hibernate.SQL: warn

@@ -1,0 +1,11 @@
+/**
+ * DTO bất biến sinh tự động từ shop-api.yaml. Không sửa tay.
+ */
+{{>generatedAnnotation}}
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+public record {{classname}}(
+{{#vars}}
+    {{#useBeanValidation}}{{#required}}@NotNull {{/required}}{{>beanValidationCore}}{{#isModel}}@Valid {{/isModel}}{{#isContainer}}{{#mostInnerItems.isModel}}@Valid {{/mostInnerItems.isModel}}{{/isContainer}}{{/useBeanValidation}}@com.fasterxml.jackson.annotation.JsonProperty("{{baseName}}") {{{datatypeWithEnum}}} {{name}}{{^-last}},{{/-last}}
+{{/vars}}
+) {
+}

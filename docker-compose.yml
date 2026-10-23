@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: annam-mysql
+    environment:
+      MYSQL_DATABASE: shopdb
+      MYSQL_USER: shop
+      MYSQL_PASSWORD: shop
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-ushop", "-pshop"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - annam-mysql:/var/lib/mysql
+
+volumes:
+  annam-mysql:

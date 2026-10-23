@@ -1,0 +1,13 @@
+# Chạy nhanh khi chưa có MySQL: --spring.profiles.active=h2
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/annam;MODE=MySQL;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect

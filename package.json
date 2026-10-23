@@ -1,0 +1,14 @@
+{
+  "name": "annam-shop",
+  "private": true,
+  "description": "Công cụ mock server và contract test cho AnNam Shop",
+  "scripts": {
+    "mock": "prism mock api/shop-api.yaml -p 4010 --cors",
+    "contract": "newman run api/postman/AnNam-Shop.postman_collection.json -e api/postman/local.postman_environment.json --color on",
+    "e2e": "node e2e/checkout-flow.mjs"
+  },
+  "devDependencies": {
+    "@stoplight/prism-cli": "^5.14.2",
+    "newman": "^6.2.1"
+  }
+}
